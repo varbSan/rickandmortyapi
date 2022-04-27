@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
+import TheSearchBar from "@/components/TheSearchBar.vue";
+import { onMounted } from "vue";
+import store from "./store";
+
+onMounted(() => {
+  store.dispatch("fetchRickAndMortyAPI");
+});
 </script>
 
 <template>
   <header>
     <img
-      alt="Vue logo"
+      alt="Morty logo"
       class="logo"
       src="@/assets/logo.svg"
       width="125"
@@ -14,7 +20,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
     />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <TheSearchBar msg="Search Me!" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>

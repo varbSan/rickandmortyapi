@@ -5,9 +5,30 @@ import ToolingIcon from "./icons/IconTooling.vue";
 import EcosystemIcon from "./icons/IconEcosystem.vue";
 import CommunityIcon from "./icons/IconCommunity.vue";
 import SupportIcon from "./icons/IconSupport.vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const incrementCount = () => {
+  store.commit("incrementCount");
+};
+const resetCount = () => {
+  store.commit("resetCount");
+};
 </script>
 
 <template>
+  <button @click="incrementCount">Increment</button>
+  <button @click="resetCount">Reset</button>
+
+  <WelcomeItem v-for="character in store.state.characters" :key="character.id">
+    <template #icon>
+      <img :src="character.image" width="50" style="border-radius: 6px" />
+    </template>
+    <template #heading>{{ character.name }}</template>
+    {{ character.status }} | {{ character.species }} | {{ character.gender }}
+  </WelcomeItem>
+
   <WelcomeItem>
     <template #icon>
       <DocumentationIcon />
