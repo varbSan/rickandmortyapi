@@ -22,7 +22,7 @@ onMounted(() => {
     </RouterLink>
 
     <div class="wrapper">
-      <TheSearchBar msg="Search Me!" />
+      <TheSearchBar msg="Ricksearch Me!" />
 
       <nav>
         <RouterLink to="/characters">Home</RouterLink>

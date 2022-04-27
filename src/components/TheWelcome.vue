@@ -6,8 +6,17 @@ import EcosystemIcon from "./icons/IconEcosystem.vue";
 import CommunityIcon from "./icons/IconCommunity.vue";
 import SupportIcon from "./icons/IconSupport.vue";
 import { useStore } from "vuex";
+import { computed } from "vue";
 
 const store = useStore();
+
+const charactersFiltered = computed(() => {
+  return store.state.characters.filter((character) => {
+    return store.state.filter.find((filter) => filter === character.status);
+  });
+});
+
+console.log(charactersFiltered);
 
 const incrementCount = () => {
   store.commit("incrementCount");
@@ -21,7 +30,7 @@ const resetCount = () => {
   <button @click="incrementCount">Increment</button>
   <button @click="resetCount">Reset</button>
 
-  <WelcomeItem v-for="character in store.state.characters" :key="character.id">
+  <WelcomeItem v-for="character in charactersFiltered" :key="character.id">
     <template #icon>
       <img :src="character.image" width="50" style="border-radius: 6px" />
     </template>
