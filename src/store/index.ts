@@ -4,18 +4,11 @@ import { createStore } from "vuex";
 const store = createStore({
   state() {
     return {
-      count: 0,
       characters: [],
       filter: ["Alive", "unknown", "Dead"],
     };
   },
   mutations: {
-    incrementCount(state: { count: number }) {
-      state.count++;
-    },
-    resetCount(state: { count: number }) {
-      state.count = 0;
-    },
     setCharacters(state: { characters: Record<string, unknown>[] }, payload) {
       state.characters = payload.results;
     },
