@@ -11,19 +11,21 @@ onMounted(() => {
 
 <template>
   <header>
-    <img
-      alt="Morty logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
+    <RouterLink class="logoLink" to="/characters">
+      <img
+        alt="Morty logo"
+        class="logo"
+        src="@/assets/logo.svg"
+        width="125"
+        height="125"
+      />
+    </RouterLink>
 
     <div class="wrapper">
       <TheSearchBar msg="Search Me!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/characters">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
@@ -71,6 +73,10 @@ nav {
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
+}
+
+a.logoLink {
+  background-color: transparent;
 }
 
 nav a.router-link-exact-active {
