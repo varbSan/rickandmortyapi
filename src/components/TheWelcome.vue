@@ -13,9 +13,6 @@ const charactersFiltered = computed(() => {
 </script>
 
 <template>
-  <button @click="incrementCount">Increment</button>
-  <button @click="resetCount">Reset</button>
-
   <WelcomeItem v-for="character in charactersFiltered" :key="character.id">
     <template #icon>
       <img :src="character.image" width="50" style="border-radius: 6px" />
