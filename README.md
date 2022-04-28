@@ -1,6 +1,6 @@
 # jellysmack-test
 
-This template should help get you started developing with Vue 3 in Vite.
+The test has been completed with template using Vue 3 and Vite.
 
 ## Recommended IDE Setup
 
