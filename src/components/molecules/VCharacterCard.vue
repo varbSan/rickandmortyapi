@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CharacterItem from "@/components/CharacterItem.vue";
+import VCharacterItem from "@/components/atoms/VCharacterItem.vue";
 
 defineProps<{
   imageWidth: string;
@@ -18,14 +18,14 @@ defineProps<{
 <template>
   <main class="grid">
     <img :src="character.image" :width="imageWidth" class="cardImage" />
-    <CharacterItem v-if="character.id">
+    <VCharacterItem v-if="character.id">
       <template #icon>
         <img :src="character.image" :width="iconWidth" class="cardIcon" />
       </template>
       <template #heading>{{ character.name }}</template>
       {{ character.status }} | {{ character.species }} |
       {{ character.gender }} | {{ character.origin.name }}
-    </CharacterItem>
+    </VCharacterItem>
   </main>
 </template>
 

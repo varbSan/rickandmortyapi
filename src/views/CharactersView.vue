@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CharacterItem from "@/components/CharacterItem.vue";
+import VCharacterItem from "@/components/atoms/VCharacterItem.vue";
 import { useStore } from "vuex";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
@@ -38,7 +38,7 @@ const fetchRickAndMortyAPIPage = (payload) => {
 
 <template>
   <main>
-    <CharacterItem
+    <VCharacterItem
       v-for="character in charactersFiltered"
       :key="character.id"
       @click="goToCharacterPage(character.id)"
@@ -48,7 +48,7 @@ const fetchRickAndMortyAPIPage = (payload) => {
       </template>
       <template #heading>{{ character.name }}</template>
       {{ character.status }}
-    </CharacterItem>
+    </VCharacterItem>
     <button @click="fetchPreviousPage">&lt;</button> | {{ currentPage }} |
     <button @click="fetchNextPage">&gt;</button>
   </main>

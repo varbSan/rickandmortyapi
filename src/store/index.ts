@@ -60,13 +60,12 @@ const store = createStore({
         console.error(e);
       }
     },
-    async fetchRickAndMortyAPICharacters(context, payload) {
+    async fetchRickAndMortyAPICharacters(context) {
       try {
         const response = await fetch(
           `https://rickandmortyapi.com/api/character`
         );
         const json = await response.json();
-        console.log(json);
         context.commit("setCharacters", json);
       } catch (e) {
         console.error(e);

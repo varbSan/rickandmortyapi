@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CharacterCard from "@/components/CharacterCard.vue";
+import VCharacterCard from "@/components/molecules/VCharacterCard.vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 import { onUpdated, computed } from "vue";
@@ -30,5 +30,9 @@ console.log(routeId.value);
 </script>
 
 <template>
-  <CharacterCard :imageWidth="'400'" :iconWidth="'50'" :character="character" />
+  <VCharacterCard
+    :imageWidth="'400'"
+    :iconWidth="'50'"
+    :character="character"
+  />
 </template>
