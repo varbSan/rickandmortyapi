@@ -3,6 +3,13 @@ import { RouterLink, RouterView } from "vue-router";
 import TheSearchBar from "@/components/TheSearchBar.vue";
 import { onMounted } from "vue";
 import store from "./store";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const goToPreviousPage = () => {
+  router.go(-1);
+};
 
 onMounted(() => {
   store.dispatch("fetchRickAndMortyAPI");
@@ -25,6 +32,7 @@ onMounted(() => {
       <TheSearchBar msg="Ricksearch Me!" />
 
       <nav>
+        <button @click="goToPreviousPage">Previous</button>
         <RouterLink to="/characters">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>

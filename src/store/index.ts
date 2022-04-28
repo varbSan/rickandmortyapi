@@ -6,6 +6,7 @@ const store = createStore({
     return {
       characters: [],
       filter: ["Alive", "unknown", "Dead"],
+      page: 1,
     };
   },
   mutations: {
@@ -23,16 +24,43 @@ const store = createStore({
   actions: {
     async fetchRickAndMortyAPI(context, payload) {
       if (payload) {
-        const response = await fetch(
-          `https://rickandmortyapi.com/api/character/?name=${payload.input}`
-        );
+        if (payload.input) {
+          const response = await fetch(
+            `https://rickandmortyapi.com/api/character/?name=${payload.input}`
+          );
 
-        if (response.ok) {
-          const json = await response.json();
-          context.commit("setCharacters", json);
-          context.commit("setFilter", payload);
-        } else {
-          console.error("fetching API error");
+          if (response.ok) {
+            const json = await response.json();
+            context.commit("setCharacters", json);
+            context.commit("setFilter", payload);
+          } else {
+            console.error("fetching API error");
+          }
+        } else if (payload.pageNumber) {
+          const response = await fetch(
+            `https://rickandmortyapi.com/api/character/?page=${payload.pageNumber}`
+          );
+
+          if (response.ok) {
+            const json = await response.json();
+            context.commit("setCharacters", json);
+            console.log(payload.pageNumber);
+          } else {
+            console.error("fetching API error");
+          }
+        } else if (payload.id) {
+          const response = await fetch(
+            `https://rickandmortyapi.com/api/character/${payload.id}`
+          );
+
+          console.log(payload.id);
+          if (response.ok) {
+            const json = await response.json();
+            context.commit("setCharacters", json);
+            context.commit("setFilter", payload);
+          } else {
+            console.error("fetching API error");
+          }
         }
       } else {
         const response = await fetch(
@@ -40,6 +68,7 @@ const store = createStore({
         );
         if (response.ok) {
           const json = await response.json();
+          console.log(json);
           context.commit("setCharacters", json);
         } else {
           console.error("fetching API error");

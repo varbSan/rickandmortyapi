@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import store from "@/store";
 import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
 
 defineProps<{
   msg: string;
 }>();
 
+const router = useRouter();
 const searchInput = ref("");
+
 const searchFilter = {
   Alive: true,
   unknown: true,
@@ -21,7 +24,7 @@ const searchPayload = computed(() => {
 });
 
 const fetchRickAndMortyAPI = () => {
-  console.log(searchFilter);
+  router.push({ name: "characters" });
   store.dispatch("fetchRickAndMortyAPI", searchPayload.value);
 };
 </script>
@@ -70,6 +73,10 @@ h1 {
 
 h3 {
   font-size: 1.2rem;
+}
+
+button:hover {
+  background-color: hsla(160, 100%, 37%, 1);
 }
 
 .greetings h1,
