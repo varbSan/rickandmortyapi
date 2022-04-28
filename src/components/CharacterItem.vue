@@ -14,8 +14,14 @@
 
 <style scoped>
 .item {
+  cursor: pointer;
   margin-top: 2rem;
   display: flex;
+}
+
+i:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 2.5rem hsla(160, 100%, 37%);
 }
 
 .details {
@@ -29,6 +35,7 @@ i {
   place-content: center;
   width: 32px;
   height: 32px;
+  transition: all 200ms;
 
   color: var(--color-text);
 }
