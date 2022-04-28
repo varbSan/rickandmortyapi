@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import store from "@/store";
+import VButton from "@/components/atoms/VButton.vue";
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 
@@ -33,7 +34,9 @@ const fetchRickAndMortyAPIName = () => {
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <form @submit.prevent="fetchRickAndMortyAPIName">
-      <input v-model="searchInput" class="greetings" /> <button>Search</button>
+      <input v-model="searchInput" class="greetings" />
+      &nbsp;
+      <VButton :msg="'Search'" />
       <div>
         <input
           v-model="searchFilter.Alive"

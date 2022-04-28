@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import TheSearchBar from "@/components/molecules/TheSearchBar.vue";
+import VButton from "@/components/atoms/VButton.vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -25,7 +26,7 @@ const goToPreviousPage = () => {
     <TheSearchBar msg="Ricksearch Me!" />
 
     <nav>
-      <button @click="goToPreviousPage">Previous</button>
+      <VButton :msg="'Previous'" @click="goToPreviousPage" />
       <RouterLink to="/characters">Home</RouterLink>
       <RouterLink to="/about">About</RouterLink>
     </nav>
