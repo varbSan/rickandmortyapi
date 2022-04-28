@@ -22,57 +22,54 @@ const store = createStore({
   },
 
   actions: {
-    async fetchRickAndMortyAPI(context, payload) {
-      if (payload) {
-        if (payload.input) {
-          const response = await fetch(
-            `https://rickandmortyapi.com/api/character/?name=${payload.input}`
-          );
+    async fetchRickAndMortyAPIName(context, payload) {
+      try {
+        const response = await fetch(
+          `https://rickandmortyapi.com/api/character/?name=${payload.input}`
+        );
 
-          if (response.ok) {
-            const json = await response.json();
-            context.commit("setCharacters", json);
-            context.commit("setFilter", payload);
-          } else {
-            console.error("fetching API error");
-          }
-        } else if (payload.pageNumber) {
-          const response = await fetch(
-            `https://rickandmortyapi.com/api/character/?page=${payload.pageNumber}`
-          );
+        const json = await response.json();
+        context.commit("setCharacters", json);
+        context.commit("setFilter", payload);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    async fetchRickAndMortyAPIPage(context, payload) {
+      try {
+        const response = await fetch(
+          `https://rickandmortyapi.com/api/character/?page=${payload.pageNumber}`
+        );
 
-          if (response.ok) {
-            const json = await response.json();
-            context.commit("setCharacters", json);
-            console.log(payload.pageNumber);
-          } else {
-            console.error("fetching API error");
-          }
-        } else if (payload.id) {
-          const response = await fetch(
-            `https://rickandmortyapi.com/api/character/${payload.id}`
-          );
+        const json = await response.json();
+        context.commit("setCharacters", json);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    async fetchRickAndMortyAPICharacter(context, payload) {
+      try {
+        const response = await fetch(
+          `https://rickandmortyapi.com/api/character/${payload.id}`
+        );
 
-          console.log(payload.id);
-          if (response.ok) {
-            const json = await response.json();
-            context.commit("setCharacters", json);
-            context.commit("setFilter", payload);
-          } else {
-            console.error("fetching API error");
-          }
-        }
-      } else {
+        const json = await response.json();
+        context.commit("setCharacters", json);
+        context.commit("setFilter", payload);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    async fetchRickAndMortyAPICharacters(context, payload) {
+      try {
         const response = await fetch(
           `https://rickandmortyapi.com/api/character`
         );
-        if (response.ok) {
-          const json = await response.json();
-          console.log(json);
-          context.commit("setCharacters", json);
-        } else {
-          console.error("fetching API error");
-        }
+        const json = await response.json();
+        console.log(json);
+        context.commit("setCharacters", json);
+      } catch (e) {
+        console.error(e);
       }
     },
   },

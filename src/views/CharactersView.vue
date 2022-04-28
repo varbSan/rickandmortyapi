@@ -24,15 +24,15 @@ const goToCharacterPage = (characterId) => {
 
 const fetchNextPage = () => {
   currentPage.value += 1;
-  return fetchRickAndMortyAPI({ pageNumber: currentPage.value });
+  return fetchRickAndMortyAPIPage({ pageNumber: currentPage.value });
 };
 const fetchPreviousPage = () => {
   currentPage.value -= 1;
-  return fetchRickAndMortyAPI({ pageNumber: currentPage.value });
+  return fetchRickAndMortyAPIPage({ pageNumber: currentPage.value });
 };
 
-const fetchRickAndMortyAPI = (payload) => {
-  store.dispatch("fetchRickAndMortyAPI", payload);
+const fetchRickAndMortyAPIPage = (payload) => {
+  store.dispatch("fetchRickAndMortyAPIPage", payload);
 };
 </script>
 

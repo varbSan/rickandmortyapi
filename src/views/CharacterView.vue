@@ -11,13 +11,13 @@ const routeId = computed(() => {
   return route.params.id;
 });
 
-const fetchRickAndMortyAPI = (payload) => {
-  store.dispatch("fetchRickAndMortyAPI", payload);
+const fetchRickAndMortyAPICharacter = (payload) => {
+  store.dispatch("fetchRickAndMortyAPICharacter", payload);
 };
 
 onUpdated(() => {
   console.log("routePayload", routeId);
-  fetchRickAndMortyAPI({ id: routeId.value });
+  fetchRickAndMortyAPICharacter({ id: routeId.value });
 });
 
 const character = computed(() => {

@@ -23,16 +23,16 @@ const searchPayload = computed(() => {
   };
 });
 
-const fetchRickAndMortyAPI = () => {
+const fetchRickAndMortyAPIName = () => {
   router.push({ name: "characters" });
-  store.dispatch("fetchRickAndMortyAPI", searchPayload.value);
+  store.dispatch("fetchRickAndMortyAPIName", searchPayload.value);
 };
 </script>
 
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <form @submit.prevent="fetchRickAndMortyAPI">
+    <form @submit.prevent="fetchRickAndMortyAPIName">
       <input v-model="searchInput" class="greetings" /> <button>Search</button>
       <div>
         <input
