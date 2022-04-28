@@ -31,7 +31,7 @@ console.log(routeId.value);
 
 <template>
   <VCharacterCard
-    :imageWidth="'400'"
+    :imageWidth="'300'"
     :iconWidth="'50'"
     :character="character"
   />
